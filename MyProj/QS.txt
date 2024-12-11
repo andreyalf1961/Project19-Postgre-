@@ -1,0 +1,33 @@
+>>> from myapp.models import*
+>>> for i in f:
+...     print(i.name, i.balance)
+... 
+Marat 10000.00
+Andrey 100000.00
+Ivan 1000.00
+
+>>> for i in f:
+...     print(i.id, i.name)
+...
+2 Marat
+1 Andrey
+3 Ivan
+>>> a=Buyer.objects.get(id=1)
+>>> a
+<Buyer: Andrey>
+>>> Buyer.objects.filter(id=3)
+<QuerySet [<Buyer: Ivan>]>
+>>> c=Buyer.objects.exclude(name='Ivan') 
+>>> c
+<QuerySet [<Buyer: Marat>, <Buyer: Andrey>]>
+>>> Buyer.objects.create(id=4,name='Sergey', balance=15000, age=45)
+<Buyer: Sergey>
+>>> Buyer.objects.all() 
+<QuerySet [<Buyer: Marat>, <Buyer: Andrey>, <Buyer: Ivan>, <Buyer: Sergey>]>
+>>> Buyer.objects.filter(id=4).delete()
+(1, {'myapp.Buyer': 1})
+>>> Buyer.objects.all()
+<QuerySet [<Buyer: Marat>, <Buyer: Andrey>, <Buyer: Ivan>]>
+>>> Buyer.objects.count()
+3
+>>>
